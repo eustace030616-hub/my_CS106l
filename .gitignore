@@ -1,2 +1,3 @@
 *.dSYM
 solveQuadratic
+.DS_Store
