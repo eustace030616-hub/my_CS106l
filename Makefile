@@ -1,7 +1,11 @@
 CXX = g++
 CXXFLAGS = -g -Wall -Wextra
 
+# Automatically find all lecture directories so make can find source files
+VPATH = $(sort $(wildcard lecture*/))
+
 # Generic rule: make <name> compiles and runs <name>.cc or <name>.cpp
+# With VPATH above, also finds sources in lecture06/, lecture07/, etc.
 # FORCE ensures it always runs the program, even if already compiled
 %: %.cc FORCE
 	$(CXX) $(CXXFLAGS) -o $@ $<
@@ -17,5 +21,5 @@ FORCE:
 # Keeps .cc files, Makefile, build.sh, .vscode, and any hidden files
 .PHONY: clean
 clean:
-	rm -rf *.dSYM
-	find . -maxdepth 1 -type f ! -name "*.*" ! -name "Makefile" -delete
+	find . -type d -name "*.dSYM" -exec rm -rf {} + 2>/dev/null
+	find . -type f ! -name "*.*" ! -name "Makefile" -delete
