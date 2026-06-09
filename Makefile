@@ -17,9 +17,10 @@ VPATH = $(sort $(wildcard lecture*/))
 
 FORCE:
 
-# Clean: delete all compiled binaries and .dSYM folders
-# Keeps .cc files, Makefile, build.sh, .vscode, and any hidden files
+# Clean: delete compiled binaries, .dSYM folders, and .txt files
+# Keeps .cc files, Makefile, build.sh, .vscode, .git, and any hidden files
 .PHONY: clean
 clean:
 	find . -type d -name "*.dSYM" -exec rm -rf {} + 2>/dev/null
-	find . -type f ! -name "*.*" ! -name "Makefile" -delete
+	find . -type f ! -name "*.*" ! -name "Makefile" -not -path "./.git/*" -delete
+	rm -f *.txt
