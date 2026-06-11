@@ -12,6 +12,7 @@ public:
     std::string getType()   const override;
 
     // Cat-specific method — not on Animal
+    void specialBehaviour() const override {purr();};
     void purr() const;
 };
 

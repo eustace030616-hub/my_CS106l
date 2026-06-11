@@ -4,7 +4,7 @@
 // TODO: Implement the constructor
 // Store the name parameter into the protected member variable
 Animal::Animal(std::string name) {
-
+    this->name = name;
 }
 
 // TODO: Implement the destructor
@@ -16,7 +16,7 @@ Animal::~Animal() {
 // TODO: Implement getName()
 // Return the animal's name
 std::string Animal::getName() const {
-
+    return name;
 }
 
 // TODO: Implement introduce()
@@ -26,5 +26,7 @@ std::string Animal::getName() const {
 // Call this->speak() and this->move() — do NOT hardcode any sounds or movements.
 // Virtual dispatch will automatically call the right derived class version at runtime.
 void Animal::introduce() const {
-
+    this->speak();
+    this->move();
+    this->specialBehaviour();
 }

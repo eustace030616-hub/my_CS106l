@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -g -Wall -Wextra
+CXXFLAGS = -g -Wall -Wextra -std=c++17
 
 # Automatically find all lecture directories so make can find source files
 VPATH = $(sort $(wildcard lecture*/))
@@ -16,6 +16,11 @@ VPATH = $(sort $(wildcard lecture*/))
 	./$@
 
 FORCE:
+
+# Multi-file programs — compile and link all .cpp files together
+ex3: $(wildcard lecture08/exercise3/*.cpp)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+	./$@
 
 # Clean: delete compiled binaries, .dSYM folders, and .txt files
 # Keeps .cc files, Makefile, build.sh, .vscode, .git, and any hidden files

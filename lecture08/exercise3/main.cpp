@@ -14,10 +14,10 @@ int main() {
     // Mix types — at least one Dog, one Cat, and one Bird.
     // Use 'new' to allocate each one on the heap.
     Animal* zoo[4] = {
-        // new Dog("Buddy"),
-        // new Cat("Whiskers"),
-        // new Bird("Tweety"),
-        // new Dog("Rex")
+        new Dog("Buddy"),
+        new Cat("Whiskers"),
+        new Bird("Tweety"),
+        new Dog("Rex")
     };
 
     std::cout << "=== Welcome to the Virtual Zoo ===" << std::endl << std::endl;
@@ -25,7 +25,13 @@ int main() {
     // TODO: Loop over the array and call introduce() on each animal.
     // Notice: even though we're using Animal* pointers, each animal
     // introduces itself differently. That's polymorphism.
+    //Hi, I'm Buddy! Woof! ...and I run on all fours
 
+    for (int i = 0; i < 4; i++) {
+        std::cout << "Hi, I'm " << zoo[i]->getName() << std::endl;
+        zoo[i]->introduce();
+     
+    }
 
     // ---------------------------------------------------------------
     // PART 4: Remove 'virtual' from speak() in Animal.h, recompile,

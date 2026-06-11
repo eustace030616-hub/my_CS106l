@@ -12,6 +12,7 @@ public:
     std::string getType()   const override;
 
     // Bird-specific method — not on Animal
+    void specialBehaviour() const override {migrate();};
     void migrate() const;
 };
 

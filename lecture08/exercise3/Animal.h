@@ -14,7 +14,7 @@ public:
     virtual void speak()            const = 0;
     virtual void move()             const = 0;
     virtual std::string getType()   const = 0;
-
+    virtual void specialBehaviour() const = 0;
     // Virtual destructor — required whenever you delete through a base pointer
     virtual ~Animal();
 
