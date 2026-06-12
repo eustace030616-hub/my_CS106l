@@ -12,7 +12,7 @@ public:
     std::string getType()   const override;
 
     // Dog-specific method — not on Animal
-    void specialBehaviour() const override {fetch();}
+    void specialBehaviour() const override {fetch();};
     void fetch() const;
 };
 

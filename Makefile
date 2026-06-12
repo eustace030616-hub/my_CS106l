@@ -18,8 +18,20 @@ VPATH = $(sort $(wildcard lecture*/))
 FORCE:
 
 # Multi-file programs — compile and link all .cpp files together
-ex3: $(wildcard lecture08/exercise3/*.cpp)
+ex3: $(wildcard lecture08/exercise3/*.cpp) FORCE
 	$(CXX) $(CXXFLAGS) -o $@ $^
+	./$@
+
+# Generic rule: make lec<NN> compiles all .cpp files in lecture<NN>/
+# and links them together. Works for standard multi-file lectures like lec08.
+lec%: FORCE
+	$(CXX) $(CXXFLAGS) -o $@ $(wildcard lecture$*/*.cpp)
+	./$@
+
+# Override: lec09 uses a "header includes .cpp" template pattern,
+# so bounded_value.cpp must NOT be compiled separately.
+lec09: FORCE
+	$(CXX) $(CXXFLAGS) -o $@ lecture09/main.cpp
 	./$@
 
 # Clean: delete compiled binaries, .dSYM folders, and .txt files
